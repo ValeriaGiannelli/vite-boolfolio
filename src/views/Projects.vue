@@ -17,8 +17,8 @@
 
     methods: {
 
-      getApi(){
-        axios.get(store.apiUrl + 'progetti')
+      getApi(apiUrl){
+        axios.get(apiUrl)
               .then(result =>{
                 console.log(result.data);
                 this.projects = result.data.projects.data;
@@ -30,7 +30,7 @@
     },
 
     mounted(){
-      this.getApi();
+      this.getApi(store.apiUrl + 'progetti');
     }
   }
 
@@ -39,20 +39,25 @@
 </script>
 
 <template>
+<div class="my-container-project">
+  <h1>I progetti</h1>
+  <ul class="list-group">
+    <li class="list-group-item" v-for="project in projects" >{{project.title}}</li>
+  </ul>
 
-    <h1>I progetti</h1>
-    <ul class="list-group">
-      <li class="list-group-item" v-for="project in projects" >{{project.title}}</li>
-    </ul>
+  <div class="paginator">
+    <button class="btn " v-for="(link, index) in paginator.links" :key="index" v-html="link.label" :disabled="link.active" @click="getApi(link.url)"></button>
 
-    <div class="paginator">
-      <button class="btn " v-for="(link, index) in paginator.links" :key="index" v-html="link.label" :disabled="link.active"></button>
+  </div>
 
-    </div>
+</div>
 
 </template>
 
 <style lang="scss" scoped>
+.my-container-project{
+  height: 100%;
+  width: 100%;
   .paginator{
     display: flex;
     align-items: center;
@@ -62,4 +67,5 @@
       padding: 5px;
     }
   }
+}
 </style>
