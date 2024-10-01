@@ -24,6 +24,8 @@
     methods: {
 
       getApi(apiUrl){
+        // ogni volta che faccio una chiamata metto la schermata di loading
+        this.loading = true;
         axios.get(apiUrl)
               .then(result =>{
                 // console.log(result.data);
@@ -63,7 +65,7 @@
 
     <!-- impaginazione -->
     <div class="paginator">
-      <button class="btn " v-for="(link, index) in paginator.links" :key="index" v-html="link.label" :disabled="link.active" @click="getApi(link.url)"></button>
+      <button class="btn " v-for="(link, index) in paginator.links" :key="index" v-html="link.label" :disabled="link.active || !link.url" @click="getApi(link.url)"></button>
   
     </div>
   </div>
