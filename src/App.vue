@@ -1,6 +1,6 @@
 <script>
 
-  import { Navbar } from './views/partials/navbar.vue';
+  import Navbar from './views/partials/navbar.vue';
 
   export default{
     components: {
@@ -12,7 +12,7 @@
 
 <template>
 
-<div>
+<div class="my-container border border-black rounded">
   <Navbar />
   <router-view></router-view>
 </div>

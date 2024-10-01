@@ -15,12 +15,12 @@ export default{
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
         <li class="nav-item">
-          <router-link :to="{name:'home'}"></router-link>
+          <router-link :to="{name:'home'}" class="nav-link">Home</router-link>
         </li>
 
         <li class="nav-item">
           <!-- <a class="nav-link" href="#">Progetti</a> -->
-          <router-link :to="{name:'projects'}"></router-link>
+          <router-link :to="{name:'projects'}" class="nav-link">Progetti</router-link>
         </li>
 
       </ul>

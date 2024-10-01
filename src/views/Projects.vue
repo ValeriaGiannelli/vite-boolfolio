@@ -1,22 +1,44 @@
 <script>
+  import axios from 'axios';
+
   export default {
     name: 'projects',
+
+    data(){
+      return {
+        projects: [],
+      }
+    },
+
+    methods: {
+
+      getApi(){
+        axios.get('http://127.0.0.1:8000/api/progetti')
+              .then(result =>{
+                console.log(result.data.projects.data);
+                this.projects = result.data.projects.data;
+              })
+      }
+    },
+
+    mounted(){
+      this.getApi();
+    }
   }
+
+
 
 </script>
 
 <template>
-  <div class="about">
+
     <h1>I progetti</h1>
-  </div>
+    <ul class="list-group">
+      <li class="list-group-item" v-for="project in projects" >{{project.title}}</li>
+    </ul>
+
 </template>
 
 <style>
-@media (min-width: 1024px) {
-  .about {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-  }
-}
+
 </style>
