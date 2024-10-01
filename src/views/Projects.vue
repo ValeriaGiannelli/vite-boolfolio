@@ -1,6 +1,13 @@
+<script>
+  export default {
+    name: 'projects',
+  }
+
+</script>
+
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
+    <h1>I progetti</h1>
   </div>
 </template>
 
