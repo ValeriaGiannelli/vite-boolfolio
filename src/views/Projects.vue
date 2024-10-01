@@ -1,12 +1,18 @@
 <script>
   import axios from 'axios';
-  import { store } from '../store.js'
+  import { store } from '../store.js';
+  import Loader from './partials/loader.vue';
 
   export default {
     name: 'projects',
 
+    components:{
+      Loader,
+    },
+
     data(){
       return {
+        loading: true,
         projects: [],
         paginator: {
           current_page: 1,
@@ -20,11 +26,12 @@
       getApi(apiUrl){
         axios.get(apiUrl)
               .then(result =>{
-                console.log(result.data);
+                // console.log(result.data);
                 this.projects = result.data.projects.data;
                 this.paginator.current_page = result.data.projects.current_page;
                 this.paginator.links = result.data.projects.links;
-                console.log(this.paginator);
+                // console.log(this.paginator);
+                this.loading = false;
               })
       }
     },
@@ -39,25 +46,43 @@
 </script>
 
 <template>
-<div class="my-container-project">
+<div>
   <h1>I progetti</h1>
-  <ul class="list-group">
-    <li class="list-group-item" v-for="project in projects" >{{project.title}}</li>
-  </ul>
 
-  <div class="paginator">
-    <button class="btn " v-for="(link, index) in paginator.links" :key="index" v-html="link.label" :disabled="link.active" @click="getApi(link.url)"></button>
-
+  <!-- loading di attesa -->
+  <div class="my-loader" v-if="loading">
+    <Loader />
+    
   </div>
+
+  <div v-else>
+    <!-- lista dei progetti -->
+    <ul class="list-group">
+      <li class="list-group-item" v-for="project in projects" >{{project.title}}</li>
+    </ul>
+
+    <!-- impaginazione -->
+    <div class="paginator">
+      <button class="btn " v-for="(link, index) in paginator.links" :key="index" v-html="link.label" :disabled="link.active" @click="getApi(link.url)"></button>
+  
+    </div>
+  </div>
+
 
 </div>
 
 </template>
 
 <style lang="scss" scoped>
-.my-container-project{
-  height: 100%;
-  width: 100%;
+
+
+.my-loader {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+
   .paginator{
     display: flex;
     align-items: center;
@@ -67,5 +92,5 @@
       padding: 5px;
     }
   }
-}
+
 </style>
