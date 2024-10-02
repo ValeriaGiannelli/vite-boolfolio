@@ -17,6 +17,13 @@ const router = createRouter({
       name: 'projects',
       component: Projects
     },
+
+
+    // errore 404
+    {
+      path: '/:pathMatch(.*)*',
+      redirect: '404'
+    },
    
   ]
 })
