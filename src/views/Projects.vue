@@ -80,7 +80,11 @@
       <h2>Lista dei progetti</h2>
       <!-- lista dei progetti -->
       <ul class="list-group">
-        <li class="list-group-item" v-for="project in projects" >{{project.title}}</li>
+        <!-- al click vado al dettaglio -->
+        
+        <li class="list-group-item" v-for="project in projects" >
+          <router-link :to="{name: 'projectDetails', params: {slug: project.slug}}">{{ project.title }}</router-link>
+        </li>
       </ul>
   
       <!-- impaginazione -->
@@ -125,9 +129,17 @@
     gap:50px;
     margin:10px;
 
-    // .list-projects{
-    //   max-width: 400px;
-    // }
+    .list-projects{
+      width: 500px;
+    }
+    a{
+      color: black;
+      text-decoration: none;
+      &:hover{
+        color: cadetblue;
+        font-weight: bold;
+      }
+    }
 
     .paginator{
       display: flex;
