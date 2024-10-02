@@ -3,14 +3,17 @@
 <script>
 import axios from 'axios';
 import {store} from '../store.js';
+import Loader from './partials/loader.vue';
 
 export default{
     name: 'ProjectDetails',
-
+    components: {
+        Loader,
+    },
     data(){
         return {
            //salvo le info del progetto 
-           project: {} 
+           project: null
         }
     },
 
@@ -35,12 +38,13 @@ export default{
         },
 
         // linguaggi usati
-        getTechnologies(project){
-            
+        getTechnologies(){
+            if(!this.project) return "Errore nel caricamento della tecnologia";
+
             // console.log(Array.isArray(project.technologies));
-            if(Array.isArray(project.technologies) && project.technologies.length){
+            if(this.project.technologies.length){
   
-                return project.technologies.map(result => result.name).join(', ');
+                return this.project.technologies.map(result => result.name).join(', ');
             } else {
                 return 'Nessun linguaggio inserito'
             }
@@ -58,17 +62,31 @@ export default{
 </script>
 
 <template>
-    <h1>{{project.title}}</h1>
+  
+    <div  v-if="project">
+        <h1>{{project.title}}</h1>
 
-    <img :src="project.img_path" :alt="project.img_original_name">
+        <img :src="project.img_path" :alt="project.img_original_name">
 
-    <p>{{project.description}}</p>
-    <P>Data inizio: {{dateFormat(project.start_date)}} </P>
-    <p> {{ getTechnologies(project) }}</p>
+        <p>{{project.description}}</p>
+        <P>Data inizio: {{dateFormat(project.start_date)}} </P>
+        <p> {{ getTechnologies() }}</p>
+    </div>
+
+      <!-- loading di attesa -->
+    <div class="my-loader" v-else>
+        <Loader />
+    </div>
 
 </template>
 
 <style lang="scss" scoped>
+
+.my-loader {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
 
 img{
     width:500px;

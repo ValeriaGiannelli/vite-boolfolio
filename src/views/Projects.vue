@@ -55,6 +55,7 @@
       },
 
       getTechnologies(project){
+        
         if (project.technologies.length) {
             return project.technologies.map(tech => tech.name).join(', ');
           }
