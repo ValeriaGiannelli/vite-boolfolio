@@ -113,7 +113,7 @@
         <h2>Tipi di progetto</h2>
         <ul class="list-group">
           <li class="list-group-item" v-for="type in types">
-            <router-link :to="{name: 'postsType', params:{slug: type.slug}}">{{type.name}}</router-link>
+            <router-link :to="{name: 'projectsType', params:{slug: type.slug}}">{{type.name}}</router-link>
           </li>
         </ul>
 
@@ -123,7 +123,9 @@
       <div>
         <h2>Linguaggi usati</h2>
         <ul class="list-group">
-          <li class="list-group-item" v-for="technology in technologies">{{technology.name}}</li>
+          <li class="list-group-item" v-for="technology in technologies">
+            <router-link :to="{name: 'projectTechnology', params:{slug: technology.slug}}">{{technology.name}}</router-link>
+          </li>
         </ul>
       </div>
   </div>

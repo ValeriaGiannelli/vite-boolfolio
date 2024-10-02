@@ -3,7 +3,8 @@ import Home from '../views/Home.vue'
 import Projects from '../views/Projects.vue'
 import ProjectDetails from '../views/ProjectDetails.vue'
 import Error404 from '../views/Error404.vue'
-import PostsType from '../views/PostsType.vue'
+import ProjectsType from '../views/ProjectsType.vue'
+import ProjectsTechnology from '../views/ProjectsTechnology.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -28,9 +29,15 @@ const router = createRouter({
     },
 
     {
+      path: '/progetti-per-tecnologia/:slug',
+      name: 'projectTechnology',
+      component: ProjectsTechnology
+    },
+
+    {
       path: '/progetti-per-tipo/:slug',
-      name: 'postsType',
-      component: PostsType
+      name: 'projectsType',
+      component: ProjectsType
     },
 
 

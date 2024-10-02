@@ -4,23 +4,23 @@
 
 
   export default {
-    name: 'PostsType',
+    name: 'ProjectsTechnology',
 
     data(){
       return{
         projects: [],
-        type: '',
+        technology: '',
       }
     },
 
     methods: {
       getApi(slug){
-        axios.get(store.apiUrl + 'progetti-per-tipo/' + slug)
+        axios.get(store.apiUrl + 'progetti-per-tecnologia/' + slug)
           .then(result =>{
-            // console.log(result.data.type);
+            // console.log(result.data);
             if(result.data.success){
-              this.projects = result.data.type.projects;
-              this.type = result.data.type.name;
+              this.projects = result.data.technology.projects;
+              this.technology = result.data.technology.name;
             } else {
               this.$router.push({name: 'Error404'});
             }
@@ -38,9 +38,9 @@
 </script>
 
 <template>
-   <h1>Elenco post per categoria: {{type}}</h1>
-   <ul>
-    <li v-for="project in projects">
+   <h1>Elenco post per categoria: {{technology}}</h1>
+   <ul class="list-group">
+    <li class="list-group-item" v-for="project in projects">
      <router-link :to="{name:'projectDetails', params: {slug: project.slug}}">{{ project.title }}</router-link> 
     </li>
    </ul>
