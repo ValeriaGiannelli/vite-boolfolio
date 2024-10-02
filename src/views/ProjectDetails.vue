@@ -59,7 +59,9 @@ export default{
 
 <template>
     <h1>{{project.title}}</h1>
-    <img src="" alt="posto dell'immagine">
+
+    <img :src="project.img_path" :alt="project.img_original_name">
+
     <p>{{project.description}}</p>
     <P>Data inizio: {{dateFormat(project.start_date)}} </P>
     <p> {{ getTechnologies(project) }}</p>
@@ -67,5 +69,9 @@ export default{
 </template>
 
 <style lang="scss" scoped>
+
+img{
+    width:500px;
+}
 
 </style>
