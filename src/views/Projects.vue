@@ -76,7 +76,7 @@
 
   <div class="my-container-flex" v-else>
     <!-- parte progetti -->
-    <div>
+    <div class="list-projects">
       <h2>Lista dei progetti</h2>
       <!-- lista dei progetti -->
       <ul class="list-group">
@@ -91,28 +91,23 @@
     </div>
 
     <!-- parte types e technologies -->
-     <div class="my-container-flex">
-
+      <!-- parte dei type -->
       <div>
-        <!-- parte dei type -->
-         <h2>Tipi di progetto</h2>
+        <h2>Tipi di progetto</h2>
         <ul class="list-group">
           <li class="list-group-item" v-for="type in types">{{type.name}}</li>
         </ul>
 
       </div>
-        <!-- parte delle technologies -->
+
+      <!-- parte delle technologies -->
       <div>
         <h2>Linguaggi usati</h2>
         <ul class="list-group">
           <li class="list-group-item" v-for="technology in technologies">{{technology.name}}</li>
         </ul>
-
       </div>
-     </div>
   </div>
-
-
 </div>
 
 </template>
@@ -129,6 +124,10 @@
     display: flex;
     gap:50px;
     margin:10px;
+
+    // .list-projects{
+    //   max-width: 400px;
+    // }
 
     .paginator{
       display: flex;
