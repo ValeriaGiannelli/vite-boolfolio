@@ -30,7 +30,7 @@
         this.loading = true;
         axios.get(apiUrl)
               .then(result =>{
-                console.log(result.data);
+                // console.log(result.data);
 
                 // switch case
                 switch(object){
@@ -42,6 +42,8 @@
 
                   case 'technologies':
                     this.technologies = result.data.technologies;
+                    console.log(result.data);
+                    
                     break;
 
                   case 'types':
@@ -50,7 +52,16 @@
                 // console.log(this.paginator);
                 this.loading = false;
               })
+      },
+
+      getTechnologies(project){
+        if (project.technologies.length) {
+            return project.technologies.map(tech => tech.name).join(', ');
+          }
+          return 'Nessun linguaggio inserito';
+        // console.log(Array.isArray(project.technologies));
       }
+
     },
 
     mounted(){
@@ -84,6 +95,7 @@
         
         <li class="list-group-item" v-for="project in projects" >
           <router-link :to="{name: 'projectDetails', params: {slug: project.slug}}">{{ project.title }}</router-link>
+          <p>Linguaggi: {{ getTechnologies(project) }}</p>
         </li>
       </ul>
   

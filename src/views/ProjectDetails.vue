@@ -35,12 +35,15 @@ export default{
         },
 
         // linguaggi usati
-        arrayToString(){
-            console.log(this.project.technologies);
-            // if(array.length){
+        getTechnologies(project){
+            
+            // console.log(Array.isArray(project.technologies));
+            if(Array.isArray(project.technologies) && project.technologies.length){
   
-            //     return array.map(result => result.name.join(', '))
-            // }
+                return project.technologies.map(result => result.name).join(', ');
+            } else {
+                return 'Nessun linguaggio inserito'
+            }
         },
     },
 
@@ -59,7 +62,7 @@ export default{
     <img src="" alt="posto dell'immagine">
     <p>{{project.description}}</p>
     <P>Data inizio: {{dateFormat(project.start_date)}} </P>
-    <p>Linguaggi usati: {{ arrayToString() }}</p>
+    <p> {{ getTechnologies(project) }}</p>
 
 </template>
 
