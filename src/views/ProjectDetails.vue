@@ -26,7 +26,7 @@ export default{
                     if(result.data.success){
                         this.project = result.data.project;
                     } else {
-                        console.log('Errore 404');    
+                        this.$router.push({name:'Error404'});    
                     }
                     
                 })
@@ -39,7 +39,7 @@ export default{
 
         // linguaggi usati
         getTechnologies(){
-            if(!this.project) return "Errore nel caricamento della tecnologia";
+            if(!this.project) return this.$router.push({name:'404'});
 
             // console.log(Array.isArray(project.technologies));
             if(this.project.technologies.length){
