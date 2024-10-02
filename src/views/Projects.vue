@@ -112,7 +112,9 @@
       <div>
         <h2>Tipi di progetto</h2>
         <ul class="list-group">
-          <li class="list-group-item" v-for="type in types">{{type.name}}</li>
+          <li class="list-group-item" v-for="type in types">
+            <router-link :to="{name: 'postsType', params:{slug: type.slug}}">{{type.name}}</router-link>
+          </li>
         </ul>
 
       </div>
@@ -152,16 +154,6 @@
     // testo delle tecnologie
     .subtitle{
       font-size: 10px;
-    }
-
-    // cambio colore link
-    a{
-      color: black;
-      text-decoration: none;
-      &:hover{
-        color: cadetblue;
-        font-weight: bold;
-      }
     }
 
     // stile dell'impaginazione

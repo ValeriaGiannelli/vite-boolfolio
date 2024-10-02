@@ -22,3 +22,13 @@ body{
   // height: 80vh;
   margin: 0 auto;
 }
+
+// cambio colore link
+a{
+  color: black;
+  text-decoration: none;
+  &:hover{
+    color: cadetblue;
+    font-weight: bold;
+  }
+}
