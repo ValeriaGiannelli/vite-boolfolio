@@ -95,7 +95,7 @@
         
         <li class="list-group-item" v-for="project in projects" >
           <router-link :to="{name: 'projectDetails', params: {slug: project.slug}}">{{ project.title }}</router-link>
-          <p>Linguaggi: {{ getTechnologies(project) }}</p>
+          <p class="subtitle">Linguaggi: {{ getTechnologies(project) }}</p>
         </li>
       </ul>
   
@@ -136,14 +136,24 @@
   justify-content: center;
   margin-bottom: 20px;
 }
+
+// contenitore per le tre liste
   .my-container-flex{
     display: flex;
     gap:50px;
     margin:10px;
 
+    // ampiezza della lista progetti
     .list-projects{
       width: 500px;
     }
+
+    // testo delle tecnologie
+    .subtitle{
+      font-size: 10px;
+    }
+
+    // cambio colore link
     a{
       color: black;
       text-decoration: none;
@@ -153,6 +163,7 @@
       }
     }
 
+    // stile dell'impaginazione
     .paginator{
       display: flex;
       align-items: center;
