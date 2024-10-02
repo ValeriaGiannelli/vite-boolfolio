@@ -18,7 +18,7 @@ export default{
         getApi(slug){
             axios.get(store.apiUrl + 'progetto/' + slug)
                 .then(result =>{
-                    console.log(result.data);
+                    // console.log(result.data);
                     // se il progetto esiste ancora
                     if(result.data.success){
                         this.project = result.data.project;
@@ -32,7 +32,16 @@ export default{
         // modifica della data
         dateFormat(date){
             return new Date(date).toLocaleDateString();
-        }
+        },
+
+        // linguaggi usati
+        arrayToString(){
+            console.log(this.project.technologies);
+            // if(array.length){
+  
+            //     return array.map(result => result.name.join(', '))
+            // }
+        },
     },
 
     mounted(){
@@ -50,7 +59,7 @@ export default{
     <img src="" alt="posto dell'immagine">
     <p>{{project.description}}</p>
     <P>Data inizio: {{dateFormat(project.start_date)}} </P>
-    <p>Linguaggi usati</p>
+    <p>Linguaggi usati: {{ arrayToString() }}</p>
 
 </template>
 
