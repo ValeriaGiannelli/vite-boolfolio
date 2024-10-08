@@ -5,6 +5,7 @@ import ProjectDetails from '../views/ProjectDetails.vue'
 import Error404 from '../views/Error404.vue'
 import ProjectsType from '../views/ProjectsType.vue'
 import ProjectsTechnology from '../views/ProjectsTechnology.vue'
+import Contacts from '../views/Contacts.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -20,6 +21,11 @@ const router = createRouter({
       path: '/progetti',
       name: 'projects',
       component: Projects
+    },
+    {
+      path: '/contatti',
+      name: 'contacts',
+      component: Contacts
     },
 
     {
