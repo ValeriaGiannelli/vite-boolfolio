@@ -30,6 +30,12 @@ export default {
                     console.log(res.data);
                     if(!res.data.success){
                         this.errors = res.data.errors;
+                    }else {
+                        this.errors={
+                            name:[],
+                            email:[],
+                            message:[]
+                        }
                     }
                 })
                 .catch(er =>{
