@@ -7,7 +7,12 @@ export default {
         return{
             name: '',
             email:'',
-            message:''
+            message:'',
+            errors:{
+                name:[],
+                email:[],
+                message:[]
+            }
         }
     },
     methods:{
@@ -23,7 +28,9 @@ export default {
             axios.post(store.apiUrl + 'send-email', data)
                 .then(res=>{
                     console.log(res.data);
-                    
+                    if(!res.data.success){
+                        this.errors = res.data.errors;
+                    }
                 })
                 .catch(er =>{
                     console.log(er.message);
@@ -43,14 +50,17 @@ export default {
             <div>
                 <label for="name">Name</label>
                 <input v-model="name" type="text" id="name">
+                <p>{{errors.name?.toString()}}</p>
             </div>
             <div>
                 <label for="email">Email</label>
                 <input v-model="email" type="text" id="email">
+                <p>{{errors.email?.toString()}}</p>
             </div>
             <div>
                 <label for="message">Name</label>
                 <textarea v-model="message" id="message"></textarea>
+                <p>{{errors.message?.toString()}}</p>
             </div>
             <button type="submit">Invia</button>
             <button type="reset">Annulla</button>
