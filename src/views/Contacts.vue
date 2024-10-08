@@ -12,7 +12,8 @@ export default {
                 name:[],
                 email:[],
                 message:[]
-            }
+            },
+            sent: false
         }
     },
     methods:{
@@ -31,6 +32,7 @@ export default {
                     if(!res.data.success){
                         this.errors = res.data.errors;
                     }else {
+                        this.sent = true;
                         this.errors={
                             name:[],
                             email:[],
@@ -52,7 +54,7 @@ export default {
 <template>
 
     <div>
-        <form action="#" @submit.prevent="sendForm">
+        <form v-if="!sent" action="#" @submit.prevent="sendForm">
             <div>
                 <label for="name">Name</label>
                 <input v-model="name" type="text" id="name">
@@ -71,6 +73,7 @@ export default {
             <button type="submit">Invia</button>
             <button type="reset">Annulla</button>
         </form>
+        <h2 v-else>Il messaggio è stato inviato correttamente</h2>
     </div>
 
 
