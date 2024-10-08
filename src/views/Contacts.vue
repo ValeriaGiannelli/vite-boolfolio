@@ -1,5 +1,20 @@
 <script>
+export default {
+    name: 'Contacts',
+    data(){
+        return{
+            name: '',
+            email:'',
+            message:''
+        }
+    },
+    methods:{
+        sendForm(){
 
+        }
+    }
+
+}
 
 </script>
 
@@ -7,19 +22,21 @@
 <template>
 
     <div>
-        <form action="#">
+        <form action="#" @submit.prevent="sendForm">
             <div>
                 <label for="name">Name</label>
-                <input type="text" id="name">
+                <input v-model="name" type="text" id="name">
             </div>
             <div>
                 <label for="email">Email</label>
-                <input type="text" id="email">
+                <input v-model="email" type="text" id="email">
             </div>
             <div>
                 <label for="message">Name</label>
-                <textarea id="message"></textarea>
+                <textarea v-model="message" id="message"></textarea>
             </div>
+            <button type="submit">Invia</button>
+            <button type="reset">Annulla</button>
         </form>
     </div>
 
