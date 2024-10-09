@@ -1,14 +1,9 @@
 # vite-boolfolio
 
-This template should help get you started developing with Vue 3 in Vite.
+Questo è la riproduzione di un ipotetito portfolio che fa riferimento alla repo laravel-api (https://github.com/ValeriaGiannelli/laravel-api). 
+tramite questo sito vengono visualizzati i progetti inseriti nel database dalla repo sopra indicata e si possono visualizzare i progetti che usano determinate tecnologie oppure progetti di uno specifico tipo.
 
-## Recommended IDE Setup
-
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+E' stata incrementata una sezione contatti con un forum in via di sviluppo.
 
 ## Project Setup
 
