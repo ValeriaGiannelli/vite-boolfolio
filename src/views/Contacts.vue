@@ -26,7 +26,7 @@ export default {
             }
 
             // chiamata axio
-            axios.post(store.apiUrl + 'send-email', data)
+            axios.post(store.apiUrl +'send-email', data)
                 .then(res=>{
                     console.log(res.data);
                     if(!res.data.success){
@@ -41,7 +41,7 @@ export default {
                     }
                 })
                 .catch(er =>{
-                    console.log(er.message);
+                    console.log(ser.message);
                 })
         }
     }
@@ -66,7 +66,7 @@ export default {
                 <p>{{errors.email?.toString()}}</p>
             </div>
             <div>
-                <label for="message">Name</label>
+                <label for="message">Messaggio</label>
                 <textarea v-model="message" id="message"></textarea>
                 <p>{{errors.message?.toString()}}</p>
             </div>
